@@ -29,13 +29,16 @@ This project focuses on leveraging data analytics to optimize marketing campaign
 ## Visuals
 
 ### ROI Comparison by Cluster
-![ROI Comparison](Visuals/ROI_Comparison_Cluster.png)
+![ROI_Comparison_Cluster](https://github.com/user-attachments/assets/cd158eab-7764-43ed-8949-c65593669b09)
+
 
 ### A/B Testing Results
-![A/B Testing Results](Visuals/AB_Testing_Results.png)
+![AB_Testing_Results](https://github.com/user-attachments/assets/361ac218-ca2a-4f87-ada9-4513c78d5c15)
+
 
 ### Workflow Diagram
-![Workflow Diagram](Visuals/Workflow_Diagram.png)
+![Beige Colorful Minimal Flowchart Infographic Graph](https://github.com/user-attachments/assets/3cf089b8-b35f-43ff-836e-883cbbd1a523)
+
 
 ---
 
