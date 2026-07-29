@@ -1,77 +1,109 @@
-# New-Marketing-data-analysis-project
-# Marketing Data Analysis Project
+# Marketing Campaign Performance Analytics
 
-## Overview
-This project focuses on leveraging data analytics to optimize marketing campaigns through customer segmentation, A/B testing, and channel performance analysis. The insights derived have demonstrated the potential for significantly improving ROI and campaign efficiency.
+An end-to-end **marketing data analyst portfolio project** for a UK retail business. It demonstrates how campaign data can be transformed into executive KPIs, channel and customer-segment insights, A/B-test evidence, and a practical budget recommendation.
 
----
+> **Data note:** the dataset is synthetic and reproducibly generated. It is suitable for portfolio demonstration but should not be presented as real company data.
 
-## Key Highlights
+## Business problem
 
-1. **Customer Segmentation**:
-   - Identified two key clusters:
-     - **Cluster 0 (Young High-Income Moderates)**: ROI of 350% with premium-focused campaigns.
-     - **Cluster 3 (Young Low-Income Moderates)**: ROI of 233.33% with referral-based campaigns.
+Marketing leaders need to know:
 
-2. **A/B Testing Results**:
-   - Tested referral-based vs. value-based messaging for Cluster 3.
-   - **Referral-based messaging** outperformed with:
-     - Higher clicks (13 vs. 11).
-     - Higher revenue ($420 vs. $190).
+- Which channels produce profitable growth?
+- Which customer segments generate the most revenue?
+- Did creative variant B outperform variant A?
+- How should the next £100,000 budget be allocated?
+- Which campaigns require optimisation before further investment?
 
-3. **Channel Performance Analysis**:
-   - **Social Media**: Most effective channel for both clusters, contributing 60% of revenue for Cluster 3.
-   - **Email**: Moderate performance.
-   - **Ads**: Minimal engagement and conversions.
+## Project results
 
----
+Running the seeded analysis produces the following portfolio baseline:
 
-## Visuals
+| KPI | Result |
+|---|---:|
+| Revenue | £2.15m |
+| Marketing spend | £630.4k |
+| Conversions | 23,200 |
+| ROAS | 3.41x |
+| CPA | £27.17 |
+| Best channel by ROAS | Email — 7.76x |
+| Highest-revenue segment | Returning Customers — £739.5k |
+| A/B test | Variant B significant, +5.37% relative conversion lift |
 
-### ROI Comparison by Cluster
-![ROI_Comparison_Cluster](https://github.com/user-attachments/assets/cd158eab-7764-43ed-8949-c65593669b09)
+### Recommended action
 
+Scale Email carefully because it has the strongest observed ROAS and lowest CPA. Maintain Paid Search and Paid Social as acquisition channels, but optimise targeting and creative before aggressive expansion. Display has the weakest ROAS and should be treated as a controlled test-and-learn channel rather than automatically receiving more budget.
 
-### A/B Testing Results
-![AB_Testing_Results](https://github.com/user-attachments/assets/361ac218-ca2a-4f87-ada9-4513c78d5c15)
+## Repository structure
 
+```text
+.
+├── dashboard/
+│   └── app.py                     # Interactive Streamlit dashboard
+├── sql/
+│   └── marketing_kpis.sql         # PostgreSQL KPI and diagnostic queries
+├── src/
+│   ├── generate_data.py           # Seeded synthetic data generator
+│   └── marketing_analysis.py      # KPI, A/B test and budget workflow
+├── tests/
+│   └── test_kpis.py               # Formula and significance tests
+├── pyproject.toml                 # Pytest configuration
+├── requirements.txt
+└── README.md
+```
 
-### Workflow Diagram
-![Beige Colorful Minimal Flowchart Infographic Graph](https://github.com/user-attachments/assets/3cf089b8-b35f-43ff-836e-883cbbd1a523)
+The generated `data/` and `outputs/` folders are intentionally ignored by Git because they can be recreated from code.
 
+## Analytical methods
 
----
+- Marketing funnel KPIs: CTR, conversion rate, CPC, CPA, ROAS, profit and ROMI
+- Correct weighted aggregation: totals are aggregated before non-additive rates are calculated
+- Channel, campaign, segment and monthly performance analysis
+- Two-proportion z-test for A/B conversion-rate comparison
+- Guardrailed budget-allocation model using ROAS and conversion evidence
+- Interactive filtering by date, region, channel and customer segment
+- Unit tests for KPI formulas and statistical-test behaviour
 
-## Tools Used
-- **Python**: Data analysis and visualizations.
-- **Power BI**: Dashboard creation.
-- **Tableau**: Data presentation.
-- **SQL**: Data extraction and processing.
+## Run locally
 
----
+```bash
+git clone https://github.com/Sujalg1994/New-Marketing-data-analysis-project.git
+cd New-Marketing-data-analysis-project
+python -m venv .venv
+```
 
-## How to Run
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/<your-username>/Marketing-Data-Analysis-Project.git
-   ```
-2. Navigate to the `Code` directory.
-3. Run the analysis scripts:
-   ```bash
-   python campaign_analysis.py
-   python ab_testing.py
-   ```
-4. Review the output visuals in the `Visuals` directory.
+Activate the environment, then install dependencies:
 
----
+```bash
+pip install -r requirements.txt
+```
 
-## Key Takeaway
-Data-driven marketing strategies transform campaign performance. By segmenting audiences and analyzing engagement, you can maximize ROI and drive targeted results.
+Generate the dataset and analysis outputs:
 
-Feel free to reach out or contribute to this project!
+```bash
+python src/generate_data.py
+python src/marketing_analysis.py --budget 100000
+```
 
----
+Launch the dashboard:
 
-### License
-This project is open-source under the MIT License.
+```bash
+streamlit run dashboard/app.py
+```
 
+Run tests:
+
+```bash
+python -m pytest -q
+```
+
+## SQL usage
+
+Load the generated CSV into a PostgreSQL table named `marketing_campaigns`, then run `sql/marketing_kpis.sql`. The SQL file includes executive KPIs, channel performance, monthly trends, segment value, A/B descriptive results and underperforming-campaign diagnostics.
+
+## Skills demonstrated
+
+`Python` · `Pandas` · `NumPy` · `SQL` · `Streamlit` · `A/B testing` · `Marketing attribution KPIs` · `Budget optimisation` · `Data storytelling` · `Testing`
+
+## Limitations
+
+This is a portfolio simulation. The analysis does not claim causal attribution across channels, customer lifetime value, incrementality, marketing-mix modelling or multi-touch attribution. A real deployment would require validated source systems, agreed attribution rules, margin data and experiment governance.
