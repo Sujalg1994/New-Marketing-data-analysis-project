@@ -66,7 +66,7 @@ The generated `data/` and `outputs/` folders are intentionally ignored by Git be
 ## Run locally
 
 ```bash
-git clone https://github.com/Sujalg1994/New-Marketing-data-analysis-project.git
+git clone https://github.com/SanketCSakhare/New-Marketing-data-analysis-project.git
 cd New-Marketing-data-analysis-project
 python -m venv .venv
 ```
